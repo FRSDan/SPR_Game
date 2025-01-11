@@ -127,5 +127,5 @@ Contributions are welcome! Please create a fork of the repository, make your cha
 ---
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the Propietary License. See the LICENSE.txt file for details.
 
