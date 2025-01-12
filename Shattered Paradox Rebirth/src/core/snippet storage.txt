@@ -1,7 +1,0 @@
-if (skipProgress) {
-                    console.log("Skip Progress: Starting animation...");
-                    skipProgress.style.transition = `width ${SPR_CONSTANTS.SPLASH_DISPLAY_DURATION}ms linear`;
-                    skipProgress.style.width = "100%";
-                } else {
-                    console.error("Skip progress bar element not found!");
-                }
