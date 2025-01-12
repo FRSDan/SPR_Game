@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shattered Paradox: Rebirth</title>
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+    <div id="root"></div>
+       <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div id="skip-box">
+            <div id="skip-progress"></div>
+            <span id="skip-text">Press ESC or Click to Skip</span>
+        </div>
+    </div>
+
+    <!-- App Root -->
+    <div id="app-root"></div>
+
+    <script type="module">
+        console.log("Splash screen logic initialized!");
+
+        // Get DOM elements
+        const splashScreen = document.getElementById("splash-screen");
+        const skipBox = document.getElementById("skip-box");
+        const skipProgress = document.getElementById("skip-progress");
+
+        let mainMenuLoaded = false; // Guard to prevent duplicate loading
+
+        if (!splashScreen) {
+            console.error("Splash screen element not found!");
+        } else {
+            console.log("Splash screen element found!");
+
+            // Ensure progress bar animates on page load
+            if (skipProgress) {
+                console.log("Animating skip progress bar...");
+                skipProgress.style.transition = "none"; // Reset animation
+                skipProgress.style.width = "0%"; // Start from 0%
+                void skipProgress.offsetWidth; // Trigger reflow
+
+                // Start animation after a slight delay
+                setTimeout(() => {
+                    skipProgress.style.transition = "width 5s linear";
+                    skipProgress.style.width = "100%"; // Animate to full width
+                }, 50);
+            } else {
+                console.error("Skip progress bar element not found!");
+            }
+
+            // Function to handle skipping
+            const skipSplashScreen = () => {
+                if (mainMenuLoaded) return; // Prevent duplicate calls
+                mainMenuLoaded = true; // Set guard flag
+
+                console.log("Splash screen skipped by user.");
+                if (skipProgress) {
+                    skipProgress.style.transition = "none"; // Stop progress animation
+                    skipProgress.style.width = "100%"; // Instantly fill the bar
+                }
+                splashScreen.style.opacity = "0"; // Start fade-out
+                setTimeout(() => {
+                    splashScreen.style.display = "none"; // Hide after fade-out
+                    console.log("Splash screen: Hidden. Proceeding to main menu...");
+                    loadMainMenu(); // Proceed to main menu
+                }, 1000); // Fade-out duration
+            };
+
+            // Add event listener for ESC key
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    skipSplashScreen();
+                }
+            });
+
+            // Add event listener for skip box click
+            if (skipBox) {
+                console.log("Skip box element found!");
+                skipBox.addEventListener("click", skipSplashScreen);
+            } else {
+                console.error("Skip box element not found!");
+            }
+
+            // Auto-hide splash screen after display duration
+            setTimeout(() => {
+                if (mainMenuLoaded) return; // Prevent duplicate calls
+                mainMenuLoaded = true; // Set guard flag
+
+                console.log("Splash screen: Starting fade-out...");
+                splashScreen.style.opacity = "0"; // Start fade-out
+                setTimeout(() => {
+                    splashScreen.style.display = "none"; // Hide after fade-out
+                    console.log("Splash screen: Hidden. Proceeding to main menu...");
+                    loadMainMenu(); // Proceed to main menu
+                }, 1000); // Fade-out duration
+            }, 5000); // Display duration
+        }
+
+        // Function to dynamically load the main menu
+        function loadMainMenu() {
+            console.log("Loading main menu...");
+            const mainMenuScript = document.createElement("script");
+            mainMenuScript.type = "module";
+            mainMenuScript.src = "./dist/core/SPR_MainMenu.js";
+            document.body.appendChild(mainMenuScript);
+        }
+    </script>
+</body>
+</html>
