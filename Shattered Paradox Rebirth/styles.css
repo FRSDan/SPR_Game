@@ -21,22 +21,33 @@ h1, h2, h3 {
 .menu-button {
     padding: 15px 30px;
     font-size: 1.2em;
-    color: #b8b8b8;
-    background: linear-gradient(145deg, #2e2e2e, #000000); /* Stronger Rusted Metal Gradient */
+    color: #ffffff; /* Bright text for better contrast */
+    background: linear-gradient(145deg, #2e2e2e, #000000); /* Rusted Metal Gradient */
     border: 2px solid #ff4500; /* Bright Orange Metallic Border */
-    text-shadow: 0 0 10px rgba(255, 69, 0, 0.8); /* Metallic Glow */
+    text-shadow: 0 0 10px rgba(255, 69, 0, 0.8); /* Orange Glow */
     font-family: 'Orbitron', sans-serif;
     cursor: pointer;
     transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Main Menu Buttons Hover */
 .menu-button:hover {
-    background: linear-gradient(145deg, #4a4a4a, #1f1f1f); /* Brighter Gradient for Hover */
-    color: #ff4500; /* Bright Orange Text */
-    text-shadow: 0 0 15px rgba(255, 69, 0, 1); /* Enhanced Glow */
-    box-shadow: 0 0 15px rgba(255, 69, 0, 0.8); /* Outer Glow on Hover */
+    background: linear-gradient(145deg, #4a4a4a, #1f1f1f); /* Brighter Hover Gradient */
+    border-color: #ffa500; /* Lighter Orange Border on Hover */
+    box-shadow: 0 0 25px rgba(255, 165, 0, 1); /* Enhanced Glow */
 }
 
+/* Main Menu Container */
+#menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Spacing between buttons */
+    height: 100vh;
+    background: url('../assets/backgrounds/main-menu-bg.jpg') no-repeat center center fixed; /* Background image */
+    background-size: cover; /* Ensure the background covers the container */
+}
 
 /* Splash Screen */
 #splash-screen {
@@ -47,32 +58,63 @@ h1, h2, h3 {
     height: 100vh;
     width: 100vw;
     opacity: 0;
-    transition: opacity 5s ease-in-out;
+    transition: opacity 3s ease-in-out;
 }
 
+/* Splash Screen */
+#splash-screen {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    background: url('./assets/logo/flesh-render-studios.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Skip Box Styling */
 #skip-box {
-    position: fixed;
+    position: absolute;
     bottom: 20px;
     right: 20px;
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
-    padding: 10px 20px;
-    border-radius: 5px;
-    z-index: 9999;
-    display: none; /* Initially hidden */
+    background: linear-gradient(145deg, #2e2e2e, #000000); /* Rusted Metal Gradient */
+    padding: 15px 20px; /* Increased padding for better spacing */
+    border: 2px solid #ff4500; /* Bright Orange Metallic Border */
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column-reverse; /* Reverse the order of children */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 69, 0, 0.8); /* Orange Glow */
+    transition: all 0.3s ease; /* Smooth hover effects */
 }
 
+/* Skip Box Hover */
+#skip-box:hover {
+    background: linear-gradient(145deg, #4a4a4a, #1f1f1f); /* Brighter Hover Gradient */
+    border-color: #ffa500; /* Lighter Orange Border on Hover */
+    box-shadow: 0 0 25px rgba(255, 165, 0, 1); /* Enhanced Glow */
+}
+
+/* Skip Progress Bar */
 #skip-progress {
     height: 5px;
-    background-color: #ff0000; /* Red progress bar */
-    width: 0%;
-    transition: width 5s linear; /* Adjust based on SPLASH_DISPLAY_DURATION */
+    background: #ff4500; /* Bright Orange Progress Bar */
+    width: 0%; /* Start at 0% */
+    transition: width 5s linear;
+    border-radius: 2px; /* Slightly rounded edges */
+    margin-top: 12px; /* Increased space between text and progress bar */
 }
 
+/* Skip Text */
 #skip-text {
-    color: white;
-    font-size: 12px;
-    text-align: center;
-    margin-top: 5px;
+    color: #ffffff; /* White Text */
+    font-size: 14px; /* Slightly larger text */
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 5px rgba(255, 69, 0, 0.8); /* Slight Orange Glow */
+    text-align: center; /* Center-align text */
+    margin-top: 5px; /* Space above the text */
 }
 
 /* Main Menu */

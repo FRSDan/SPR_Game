@@ -3,7 +3,6 @@ import { SPR_CONSTANTS } from '../utils/SPR_Constants';
 import { initializeSplashScreen } from './SPR_Core_Exporter';
 
 // Main Menu Initialization
-document.addEventListener("DOMContentLoaded", () => {
     console.log("Main Menu Loaded");
 
     // Remove inline background setting to respect styles.css
@@ -45,4 +44,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Add Menu to Body
     document.body.appendChild(menuContainer);
-});

@@ -52,7 +52,7 @@ splashScript.onload = () => {
                     splashScreen.style.display = "none"; // Hide after fade-out
                     console.log("Splash screen: Hidden. Proceeding to main menu...");
                     loadMainMenu(); // Proceed to main menu
-                }, 5000); // Fade-out duration
+                }, 2000); // Fade-out duration
             });
 
             // Skip on Escape key
@@ -64,7 +64,7 @@ splashScript.onload = () => {
                         splashScreen.style.display = "none"; // Hide after fade-out
                         console.log("Splash screen: Hidden. Proceeding to main menu...");
                         loadMainMenu(); // Proceed to main menu
-                    }, 5000); // Fade-out duration
+                    }, 2000); // Fade-out duration
                 }
             });
         });
